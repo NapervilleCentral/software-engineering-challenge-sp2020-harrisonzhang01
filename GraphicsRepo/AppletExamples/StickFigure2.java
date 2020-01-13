@@ -5,18 +5,21 @@
 //********************************************************************
 
 import java.awt.*;
+import java.util.Random;
 
-public class StickFigure
+public class StickFigure2 implements Runnable
 {
    private int baseX;     // center of figure
    private int baseY;     // floor (bottom of feet)
    private Color color;   // color of stick figure
    private int height;    // height of stick figure
 
+   private Random gen = new Random();
+
    //-----------------------------------------------------------------
    //  Sets up the stick figure's primary attributes.
    //-----------------------------------------------------------------
-   public StickFigure (int center, int bottom, Color shade, int size)
+   public StickFigure2 (int center, int bottom, Color shade, int size)
    {
       baseX = center;
       baseY = bottom;
@@ -55,8 +58,23 @@ public class StickFigure
    * setHeight
    * @param new height for figure
    */
-
    public void setHeight(int size){
    		height = size;
+   }
+   /**
+   * run method changes height of my figures
+   */
+   public void run(){
+   		while(true){
+			int newHeight = 100 + gen.nextInt(45);
+			height = newHeight;
+
+		//just to slow downt he movement of the figure
+		try{
+			Thread.sleep(17);//30 or 60 fps
+		}catch(Exception e){}
+		//test for is this working
+		System.out.println(height);
+	}
    }
 }

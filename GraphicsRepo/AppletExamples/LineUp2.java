@@ -9,14 +9,14 @@ import java.applet.Applet;
 import java.awt.*;
 import javax.swing.*;
 
-public class LineUp extends Applet
+public class LineUp2 extends Applet
 {
    private final int APPLET_WIDTH = 400;
    private final int APPLET_HEIGHT = 150;
    private final int HEIGHT_MIN = 100;
    private final int VARIANCE = 40;
 
-   private StickFigure figure1, figure2, figure3, figure4;
+   private StickFigure2 figure1, figure2, figure3, figure4;
 
    //-----------------------------------------------------------------
    //  Creates several stick figures with varying characteristics.
@@ -31,10 +31,17 @@ public class LineUp extends Applet
       h3 = HEIGHT_MIN + generator.nextInt(VARIANCE);
       h4 = HEIGHT_MIN + generator.nextInt(VARIANCE);
 
-      figure1 = new StickFigure (100, 150, Color.red, h1);
-      figure2 = new StickFigure (150, 150, Color.green, h2);
-      figure3 = new StickFigure (200, 150, Color.blue, h3);
-      figure4 = new StickFigure (250, 150, Color.yellow, h4);
+      figure1 = new StickFigure2 (100, 150, Color.red, h1);
+      figure2 = new StickFigure2 (150, 150, Color.green, h2);
+      figure3 = new StickFigure2 (200, 150, Color.blue, h3);
+      figure4 = new StickFigure2 (250, 150, Color.cyan, h4);
+
+      Thread t1 = new Thread(figure1);
+      t1.start();
+
+      Thread t2 = new Thread(figure2);
+      t2.start();
+
 
       setBackground (Color.black);
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
@@ -52,11 +59,13 @@ public class LineUp extends Applet
       figure3.draw(page);
       figure4.draw(page);
 
-      int newHeight = HEIGHT_MIN + generator.nextInt(VARIANCE);
-      int newHeight2 = HEIGHT_MIN + generator.nextInt(VARIANCE);
 
-      figure1.setHeight(newHeight);
-      figure2.setHeight(newHeight2);
+      //now the figure is in control.=
+      //int newHeight = HEIGHT_MIN + generator.nextInt(VARIANCE);
+      //int newHeight2 = HEIGHT_MIN + generator.nextInt(VARIANCE);
+
+      //figure1.setHeight(newHeight);
+      //figure2.setHeight(newHeight2);
 
       try{
 	  	//pause the program for a quarter sec(milliseconds)

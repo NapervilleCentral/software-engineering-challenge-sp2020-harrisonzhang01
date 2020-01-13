@@ -9,21 +9,22 @@ import java.applet.Applet;
 import java.awt.*;
 import javax.swing.*;
 
-public class LineUp extends Applet
+public class City extends Applet
 {
    private final int APPLET_WIDTH = 400;
    private final int APPLET_HEIGHT = 150;
    private final int HEIGHT_MIN = 100;
+   private final int WIDTH_MIN = 75;
    private final int VARIANCE = 40;
 
-   private StickFigure figure1, figure2, figure3, figure4;
+   private Building build1, build2, build3, build4;
 
    //-----------------------------------------------------------------
-   //  Creates several stick figures with varying characteristics.
+   //  Creates several buildings with varying characteristics.
    //-----------------------------------------------------------------
    public void init ()
    {
-      int h1, h2, h3, h4;  // heights of stick figures
+      int h1, h2, h3, h4, w1, w2, w3, w4;  // heights of stick figures
       Random generator = new Random();
 
       h1 = HEIGHT_MIN + generator.nextInt(VARIANCE);
@@ -31,10 +32,15 @@ public class LineUp extends Applet
       h3 = HEIGHT_MIN + generator.nextInt(VARIANCE);
       h4 = HEIGHT_MIN + generator.nextInt(VARIANCE);
 
-      figure1 = new StickFigure (100, 150, Color.red, h1);
-      figure2 = new StickFigure (150, 150, Color.green, h2);
-      figure3 = new StickFigure (200, 150, Color.blue, h3);
-      figure4 = new StickFigure (250, 150, Color.yellow, h4);
+      w1 = WIDTH_MIN + generator.nextInt(VARIANCE);
+	  w2 = WIDTH_MIN + generator.nextInt(VARIANCE);
+	  w3 = WIDTH_MIN + generator.nextInt(VARIANCE);
+      w4 = WIDTH_MIN + generator.nextInt(VARIANCE);
+
+      build1 = new Building (100, 150, Color.red, h1, w1);
+      build2 = new Building (150, 150, Color.green, h2, w2);
+      build3 = new Building (200, 150, Color.blue, h3, w3);
+      build4 = new Building (250, 150, Color.yellow, h4, w4);
 
       setBackground (Color.black);
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
@@ -47,16 +53,19 @@ public class LineUp extends Applet
    {
 
 	  Random generator = new Random();
-      figure1.draw (page);
-      figure2.draw(page);
-      figure3.draw(page);
-      figure4.draw(page);
+      build1.draw(page);
+      build2.draw(page);
+      build3.draw(page);
+      build4.draw(page);
 
       int newHeight = HEIGHT_MIN + generator.nextInt(VARIANCE);
       int newHeight2 = HEIGHT_MIN + generator.nextInt(VARIANCE);
 
-      figure1.setHeight(newHeight);
-      figure2.setHeight(newHeight2);
+      int newWidth = WIDTH_MIN + generator.nextInt(VARIANCE);
+      int newWidth2 = WIDTH_MIN + generator.nextInt(VARIANCE);
+
+      build1.setParam(newHeight, newWidth, Color.red);
+      build2.setParam(newHeight2, newWidth2, Color.cyan);
 
       try{
 	  	//pause the program for a quarter sec(milliseconds)
