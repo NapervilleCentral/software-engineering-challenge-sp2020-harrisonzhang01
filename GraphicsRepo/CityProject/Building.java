@@ -25,6 +25,14 @@ public class Building
       width = wide;
    }
 
+   public Building(){
+	   baseX = 0;
+	   baseY = 0;
+	   color = Color.cyan;
+	   height = 0;
+	   width = 0;
+   }
+
    //-----------------------------------------------------------------
    //  Draws this figure relative to baseX, baseY, and height.
    //-----------------------------------------------------------------
@@ -32,12 +40,22 @@ public class Building
    {
 
       //increases y moves closer to the bottom, center of head moved down to bottom of head
-      page.drawRect(baseX, baseY, width, height);
+      page.drawRect(baseX, baseY, -width, -height);
       page.setColor(color);
 
       //windows
 
    }
+
+   /*
+   * drawDoof, draws Doofenshmirtz Tower.
+   */
+   public void drawDoof(Graphics page){
+	   int x[] = {500,1000,1000,300};
+	   int y[] = {700,700,400,400};
+	   page.drawPolygon(x,y,4);
+   }
+
    /**
    * setParam
    * @param new height, width, and color for building
