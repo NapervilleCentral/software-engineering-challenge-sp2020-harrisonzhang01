@@ -25,10 +25,10 @@ public class Building
       width = wide;
    }
 
-   public Building(){
+   public Building(Color shade){
 	   baseX = 0;
 	   baseY = 0;
-	   color = Color.cyan;
+	   color = shade;
 	   height = 0;
 	   width = 0;
    }
@@ -45,15 +45,6 @@ public class Building
 
       //windows
 
-   }
-
-   /*
-   * drawDoof, draws Doofenshmirtz Tower.
-   */
-   public void drawDoof(Graphics page){
-	   int x[] = {500,1000,1000,300};
-	   int y[] = {700,700,400,400};
-	   page.drawPolygon(x,y,4);
    }
 
    /**
