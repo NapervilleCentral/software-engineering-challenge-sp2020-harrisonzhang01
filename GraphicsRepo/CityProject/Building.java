@@ -39,7 +39,7 @@ public class Building
    public void draw (Graphics page)
    {
 
-      //increases y moves closer to the bottom, center of head moved down to bottom of head
+      //draws building
       page.drawRect(baseX, baseY, -width, -height);
       page.setColor(color);
 

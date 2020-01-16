@@ -18,6 +18,7 @@ public class City extends Applet
    private final int VARIANCE = 50;
 
    private Building build1, build2, build3, build4, build5;
+   private Doofinator doof1;
 
    //-----------------------------------------------------------------
    //  Creates several buildings with varying characteristics.
@@ -37,19 +38,22 @@ public class City extends Applet
 	  w3 = WIDTH_MIN + generator.nextInt(VARIANCE)+50;
       w4 = WIDTH_MIN + generator.nextInt(VARIANCE)+50;
 
+      Color sky = new Color(134, 218, 252);
+      setBackground(sky);
+      
       Color c1 = new Color(200, 209, 192);
       Color c2 = new Color(191, 200, 217);
       Color c3 = new Color(154, 194, 206);
       Color c4 = new Color(186, 197, 215);
 
-      build1 = new Building (600, 700, c1, h1, w1);
-      build2 = new Building (w1 + 650, 700, c2, h2, w2);
-      build3 = new Building (w1 + w2 + 750, 700, c3, h3, w3);
-      build4 = new Building (w1 + w2 + w3 + 900, 700, c4, h4, w4);
+      build1 = new Building(600, 700, c1, h1, w1);
+      build2 = new Building(w1 + 650, 700, c2, h2, w2);
+      build3 = new Building(w1 + w2 + 750, 700, c3, h3, w3);
+      build4 = new Building(w1 + w2 + w3 + 900, 700, c4, h4, w4);
+      
+      Color c5 = new Color(149,159,159);
+      doof1 = new Doofinator(300, 300, c5);
 
-
-      Color scene = new Color(134, 218, 252);
-      setBackground (scene);
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
    }
 
@@ -58,23 +62,15 @@ public class City extends Applet
    //-----------------------------------------------------------------
    public void paint (Graphics page)
    {
-
-	  Random generator = new Random();
       build1.draw(page);
       build2.draw(page);
       build3.draw(page);
       build4.draw(page);
 
       Image img = getImage(getDocumentBase(), "doof.jpg");
-
-      //this.setSize(300,100);
       page.drawImage(img, 0, 75, getWidth()-1000, getHeight()-100, this);
-
-      int newHeight = HEIGHT_MIN + generator.nextInt(VARIANCE);
-      int newHeight2 = HEIGHT_MIN + generator.nextInt(VARIANCE);
-
-      int newWidth = WIDTH_MIN + generator.nextInt(VARIANCE);
-      int newWidth2 = WIDTH_MIN + generator.nextInt(VARIANCE);
+      
+      doof1.draw(page);
 
 
 

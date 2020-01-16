@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=x\ y\ shade\ tall\ wide
+comment0.target=Building(int,\ int,\ java.awt.Color,\ int,\ int)
+comment1.params=shade
+comment1.target=Building(java.awt.Color)
+comment2.params=page
+comment2.target=void\ draw(java.awt.Graphics)
+comment3.params=x\ y\ shade
+comment3.target=void\ setParam(int,\ int,\ java.awt.Color)
+comment3.text=\n\ setParam\n\ @param\ new\ height,\ width,\ and\ color\ for\ building\n
+numComments=4
