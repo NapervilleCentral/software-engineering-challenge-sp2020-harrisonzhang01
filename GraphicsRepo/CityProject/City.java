@@ -6,6 +6,7 @@
 
 import java.util.Random;
 import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.*;
 import javax.swing.*;
 
@@ -19,6 +20,8 @@ public class City extends Applet
 
    private Building build1, build2, build3, build4, build5;
    private Doofinator doof1;
+   
+   private AudioClip audio;
 
    //-----------------------------------------------------------------
    //  Creates several buildings with varying characteristics.
@@ -26,6 +29,8 @@ public class City extends Applet
    public void init ()
    {
       int h1, h2, h3, h4, w1, w2, w3, w4;  // heights of stick figures
+      audio = getAudioClip(getCodeBase(), "theme.au");
+      
       Random generator = new Random();
 
       h1 = HEIGHT_MIN + generator.nextInt(VARIANCE)+100;
@@ -55,6 +60,8 @@ public class City extends Applet
       doof1 = new Doofinator(300, 300, c5);
 
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
+      
+      
    }
 
    //-----------------------------------------------------------------
@@ -62,6 +69,9 @@ public class City extends Applet
    //-----------------------------------------------------------------
    public void paint (Graphics page)
    {
+      //audio = getAudioClip(getCodeBase(), "theme.au");
+      audio.play();
+      
       build1.draw(page);
       build2.draw(page);
       build3.draw(page);
