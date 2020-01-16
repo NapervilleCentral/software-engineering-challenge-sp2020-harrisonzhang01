@@ -5,13 +5,12 @@
  * @version (a version number or a date)
  */
 import java.awt.*;
-public class Aim{
+import java.applet.Applet;
+public class Aim extends Applet{
 
-	static JFrame frame;
 	static Label label, label1, label2;
 	Aim(){
-      frame = new JFrame("cursor");
-      JPanel panel = new JPanel();
+      Panel panel = new Panel();
 
       Image aim = Toolkit.getDefaultToolkit().getImage("crosshair.png");
 
@@ -20,8 +19,6 @@ public class Aim{
 
       Cursor crosshair = Toolkit.getDefaultToolkit().createCustomCursor(aim, point, "crosshair");
       label.setCursor(crosshair);
-      panel.add(label);
-      frame.add(panel);
-      frame.setSize(250, 300);
+
    }
 }

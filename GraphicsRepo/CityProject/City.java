@@ -63,30 +63,32 @@ public class City extends Applet{
 
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
 
+
+      //Crosshair
+	  Image aim = Toolkit.getDefaultToolkit().getImage("crosshair.png");
+	  Cursor crosshair = Toolkit.getDefaultToolkit().createCustomCursor(aim, new Point(0,0), "custom");
+      setCursor(crosshair);
+
+
    }
 
    //-----------------------------------------------------------------
-   //  Paints the stick figures on the applet.
+   //  Paints the city on the applet.
    //-----------------------------------------------------------------
    public void paint (Graphics page)
    {
       //audio = getAudioClip(getCodeBase(), "theme.au");
       audio.loop();
-      Aim c = new Aim();
-      cursor crosshair = new cursor();
+
       build1.draw(page);
       build2.draw(page);
       build3.draw(page);
       build4.draw(page);
 
-      Image img = getImage(getDocumentBase(), "doof1.jpg");
+      Image img = getImage(getDocumentBase(), "doof.jpg");
       page.drawImage(img, 0, 0, getWidth()-850, getHeight(), this);
 
       doof1.draw(page);
-
-
-
-
 
    }
 }

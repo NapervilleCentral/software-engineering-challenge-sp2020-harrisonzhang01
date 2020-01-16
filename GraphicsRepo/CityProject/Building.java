@@ -42,8 +42,16 @@ public class Building
       //draws building
       page.drawRect(baseX, baseY, -width, -height);
       page.setColor(color);
+      //Button button = new Button("");
+      //button.setBounds(50,100,95,30);
+      //button.setBackground(color);
+
+      //button.addActionListener(new ActionListener(){
+		  //public void actionPerformed(ActionEvent e){
+			  //page.drawRect(baseX, baseY, 500, 500);}});
 
       //windows
+
 
    }
 
