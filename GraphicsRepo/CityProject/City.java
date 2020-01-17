@@ -10,7 +10,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class City extends Applet implements MouseListener, MouseMotionListener{
+public class City extends Applet implements MouseListener{//, MouseMotionListener{
    private final int APPLET_WIDTH = 1920;
    private final int APPLET_HEIGHT = 1080;
    private final int HEIGHT_MIN = 100;
@@ -70,15 +70,13 @@ public class City extends Applet implements MouseListener, MouseMotionListener{
 	  Cursor crosshair = Toolkit.getDefaultToolkit().createCustomCursor(aim, new Point(0,0), "custom");
       setCursor(crosshair);
 
-      wide = getSize().width;
-	  high = getSize().height;
-	  //setBackground( Color.black );
-	  mouseX = wide/2;
-	  mouseY = high/2;
+      //wide = getSize().width;
+	  //high = getSize().height;
+	  //mouseX = wide/2;
+	  //mouseY = high/2;
 
-	  addMouseListener( this );
-	  addMouseMotionListener( this );
-
+	  //addMouseListener( this );
+	  //addMouseMotionListener( this );
 
    }
 
@@ -98,20 +96,56 @@ public class City extends Applet implements MouseListener, MouseMotionListener{
       page.drawImage(img, 0, 0, getWidth()-850, getHeight(), this);
 
       doof1.draw(page);
-      int count = 0;
-      while(count < 1000){
+
+
+      //while(count < 1000){
+		  //repaint();
+	  //}
+	  Random gen = new Random();
+	  int count = 0;
+	  //int newHeight1 = build1.getHeight();
+	  int newHeight2 = build2.getHeight();
+	  int newHeight3 = build3.getHeight();
+	  int newHeight4 = build4.getHeight();
+	  while(count < 50){
+		 // newHeight1 = newHeight1 + gen.nextInt(3)-1;
+		  newHeight2 = newHeight2 + gen.nextInt(3)-1;
+		  newHeight3 = newHeight3 + gen.nextInt(3)-1;
+		  newHeight4 = newHeight4 + gen.nextInt(3)-1;
+
+		  //build2.setHeight(newHeight2);
 		  repaint();
+		  //just to slow downt he movement of the figure
+		  try{
+			  Thread.sleep(10);//30 or 60 fps = 17
+		  }catch(Exception e){}
+		  //test for is this working
+		  count++;
 	  }
 
    }
-
-   public void mouseClicked(MouseEvent event){
-	   Building build = new Building(event);
-	   int tall = build.getHeight();
-	   while(tall > 0){
-		   build.setHeight(tall);
-		   tall = tall - 10;
+   public void mouseClicked(MouseEvent e){
+	   mouseX = e.getX();
+	   mouseY = e.getY();
+	   if(mouseX > build1.getBaseX() && mouseX < (build1.getBaseX()+build1.getWidth()) &&
+	      mouseY > build1.getBaseY() && mouseY < (build1.getBaseY()-build1.getHeight()));{
+		   int next = build1.getHeight();
+		   while(build1.getHeight() > 700){
+			   next = next - 10;
+			   build1.setHeight(next);
+			   repaint();
+		   }
 	   }
    }
-   public void mouseExited(MouseEvent){}
+
+   public void mousePressed(MouseEvent e){}
+   public void mouseEntered(MouseEvent e){}
+
+   public void mouseReleased(MouseEvent e){}
+   public void mouseExited(MouseEvent e){}
+
+   public void mouseDragged(MouseEvent e){}
+   public void mouseMoved(MouseEvent e){}
+
+
 }

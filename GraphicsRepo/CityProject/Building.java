@@ -62,6 +62,17 @@ public class Building{
    public int getHeight(){
 	   return height;
    }
+   public int getWidth(){
+   	   return width;
+   }
+   public int getBaseX(){
+   	   return baseX;
+   }
+   public int getBaseY(){
+   	   return baseY;
+   }
+   public void run(){
 
+	}
 
 }
