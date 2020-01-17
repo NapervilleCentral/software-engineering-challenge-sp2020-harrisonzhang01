@@ -5,13 +5,12 @@
 //********************************************************************
 
 import java.util.Random;
-import java.applet.Applet;
-import java.applet.AudioClip;
+import java.applet.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class City extends Applet{
+public class City extends Applet implements MouseListener, MouseMotionListener{
    private final int APPLET_WIDTH = 1920;
    private final int APPLET_HEIGHT = 1080;
    private final int HEIGHT_MIN = 100;
@@ -22,6 +21,8 @@ public class City extends Applet{
    private Doofinator doof1;
 
    private AudioClip audio;
+
+   private int wide, high, mouseX, mouseY;
 
    //-----------------------------------------------------------------
    //  Creates several buildings with varying characteristics.
@@ -64,10 +65,19 @@ public class City extends Applet{
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
 
 
-      //Crosshair
+      //Changes cursor to a crosshair
 	  Image aim = Toolkit.getDefaultToolkit().getImage("crosshair.png");
 	  Cursor crosshair = Toolkit.getDefaultToolkit().createCustomCursor(aim, new Point(0,0), "custom");
       setCursor(crosshair);
+
+      wide = getSize().width;
+	  high = getSize().height;
+	  //setBackground( Color.black );
+	  mouseX = wide/2;
+	  mouseY = high/2;
+
+	  addMouseListener( this );
+	  addMouseMotionListener( this );
 
 
    }
@@ -75,8 +85,7 @@ public class City extends Applet{
    //-----------------------------------------------------------------
    //  Paints the city on the applet.
    //-----------------------------------------------------------------
-   public void paint (Graphics page)
-   {
+   public void paint (Graphics page){
       //audio = getAudioClip(getCodeBase(), "theme.au");
       audio.loop();
 
@@ -89,6 +98,20 @@ public class City extends Applet{
       page.drawImage(img, 0, 0, getWidth()-850, getHeight(), this);
 
       doof1.draw(page);
+      int count = 0;
+      while(count < 1000){
+		  repaint();
+	  }
 
    }
+
+   public void mouseClicked(MouseEvent event){
+	   Building build = new Building(event);
+	   int tall = build.getHeight();
+	   while(tall > 0){
+		   build.setHeight(tall);
+		   tall = tall - 10;
+	   }
+   }
+   public void mouseExited(MouseEvent){}
 }
