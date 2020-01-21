@@ -57,7 +57,7 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
       build1 = new Building(800, 700, c1, h1, width);
       build2 = new Building(width + 825, 700, c2, h2, width);
       build3 = new Building(2*width + 850, 700, c3, h3, width);
-      build4 = new Building(3*width + 925, 700, c4, h4, width);
+      build4 = new Building(3*width + 875, 700, c4, h4, width);
 
       Color c5 = new Color(149,159,159);
       doof1 = new Doofinator(300, 300, c5);
@@ -88,6 +88,7 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
       audio.loop();
 
       build1.draw(page);
+      build1.drawWindow(page);
       build2.draw(page);
       build3.draw(page);
       build4.draw(page);
@@ -109,11 +110,13 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 	  int newHeight4 = build4.getHeight();
 	  while(count < 50){
 		 // newHeight1 = newHeight1 + gen.nextInt(3)-1;
-		  newHeight2 = newHeight2 + gen.nextInt(3)-1;
-		  newHeight3 = newHeight3 + gen.nextInt(3)-1;
-		  newHeight4 = newHeight4 + gen.nextInt(3)-1;
+		  newHeight2 = newHeight2 + (gen.nextInt(3)-1)*5;
+		  newHeight3 = newHeight3 + (gen.nextInt(3)-1)*5;
+		  newHeight4 = newHeight4 + (gen.nextInt(3)-1)*5;
 
-		  //build2.setHeight(newHeight2);
+		  build2.setHeight(newHeight2);
+		  build3.setHeight(newHeight3);
+		  build4.setHeight(newHeight4);
 		  repaint();
 		  //just to slow downt he movement of the figure
 		  try{
@@ -128,10 +131,10 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 	   mouseX = e.getX();
 	   mouseY = e.getY();
 	   if(mouseX > build1.getBaseX() && mouseX < (build1.getBaseX()+build1.getWidth()) &&
-	      mouseY > build1.getBaseY() && mouseY < (build1.getBaseY()-build1.getHeight()));{
+	      mouseY > build1.getBaseY() && mouseY < (build1.getBaseY()+build1.getHeight()));{
 		   int next = build1.getHeight();
-		   while(build1.getHeight() > 700){
-			   next = next - 10;
+		   while(build1.getHeight() < 700){
+			   next = next + 100;
 			   build1.setHeight(next);
 			   repaint();
 		   }

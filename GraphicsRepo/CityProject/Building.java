@@ -38,8 +38,10 @@ public class Building{
    public void draw (Graphics page){
 
       //draws building
-      page.drawRect(baseX, baseY, -width, -height);
       page.setColor(color);
+      page.drawRect(baseX, baseY, -width, -height);
+
+
       //Button button = new Button("");
       //button.setBounds(50,100,95,30);
       //button.setBackground(color);
@@ -50,6 +52,24 @@ public class Building{
 
       //windows
    }
+   public void drawWindow(Graphics page){
+	   int x = width;
+	   int y = height;
+	   Color window = new Color(230,230,230);
+	   for(int i = 0; i < height; i++){
+		   for(int j = 0; j < width; j++){
+			   page.setColor(window);
+			   //page.fillRect(x,y,10,10);
+			   x+=15;
+			   //if(x>baseX && x<(baseX+width) && y>baseY && y<(baseY+height)){
+				   page.fillRect(x,y,10,10);
+			   //}
+
+	       }
+	       x=0;
+	       y+=15;
+	   }
+    }
 
    /**
    * setParam
