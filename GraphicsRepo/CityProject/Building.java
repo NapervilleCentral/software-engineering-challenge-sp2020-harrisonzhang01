@@ -53,21 +53,23 @@ public class Building{
       //windows
    }
    public void drawWindow(Graphics page){
-	   int x = width;
-	   int y = height;
+	   int x = baseX;
+	   int y = baseY;
 	   Color window = new Color(230,230,230);
 	   for(int i = 0; i < height; i++){
 		   for(int j = 0; j < width; j++){
 			   page.setColor(window);
-			   //page.fillRect(x,y,10,10);
 			   x+=15;
-			   //if(x>baseX && x<(baseX+width) && y>baseY && y<(baseY+height)){
-				   page.fillRect(x,y,10,10);
-			   //}
+			   if(x<(baseX+width)){
+				   page.fillRect(x-155,y,10,10);
+			   }
 
 	       }
-	       x=0;
-	       y+=15;
+	       x=baseX;
+	       y-=15;
+	       if(y<(baseY-height)){
+			   break;
+		   }
 	   }
     }
 

@@ -41,11 +41,6 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 
       int width = 150;
 
-      w1 = WIDTH_MIN + generator.nextInt(VARIANCE)+50;
-	  w2 = WIDTH_MIN + generator.nextInt(VARIANCE)+50;
-	  w3 = WIDTH_MIN + generator.nextInt(VARIANCE)+50;
-      w4 = WIDTH_MIN + generator.nextInt(VARIANCE)+50;
-
       Color sky = new Color(134, 218, 252);
       setBackground(sky);
 
@@ -88,10 +83,14 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
       audio.loop();
 
       build1.draw(page);
-      build1.drawWindow(page);
       build2.draw(page);
       build3.draw(page);
       build4.draw(page);
+
+      build1.drawWindow(page);
+      build2.drawWindow(page);
+      build3.drawWindow(page);
+      build4.drawWindow(page);
 
       Image img = getImage(getDocumentBase(), "doof.jpg");
       page.drawImage(img, 0, 0, getWidth()-850, getHeight(), this);
@@ -130,8 +129,8 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
    public void mouseClicked(MouseEvent e){
 	   mouseX = e.getX();
 	   mouseY = e.getY();
-	   if(mouseX > build1.getBaseX() && mouseX < (build1.getBaseX()+build1.getWidth()) &&
-	      mouseY > build1.getBaseY() && mouseY < (build1.getBaseY()+build1.getHeight()));{
+	   if(mouseX > build1.getBaseX()-155 && mouseX < (build1.getBaseX()+build1.getWidth()) &&
+	      mouseY > build1.getHeight() && mouseY < (build1.getBaseY()));{
 		   int next = build1.getHeight();
 		   while(build1.getHeight() < 700){
 			   next = next + 100;
