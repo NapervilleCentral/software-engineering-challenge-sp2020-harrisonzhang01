@@ -1,8 +1,7 @@
-//********************************************************************
-//  StickFigure.java       Author: Lewis/Loftus/Cocking
-//
-//  Represents a graphical stick figure.
-//********************************************************************
+/**
+ * @Harrison Zhang
+ * Building Class - Creates buildings with windwos
+ */
 
 import java.awt.*;
 import java.applet.*;
@@ -24,36 +23,21 @@ public class Building{
       height = tall;
       width = wide;
    }
-   public Building(MouseEvent event){
-
-
-   }
 
    //-----------------------------------------------------------------
-   //  Draws this figure relative to baseX, baseY, and height.
+   //  Draws building relative to baseX, baseY, width, and height.
    //-----------------------------------------------------------------
    public void init(){
 
    }
    public void draw (Graphics page){
-
       //draws building
       page.setColor(color);
-      page.drawRect(baseX, baseY, -width, -height);
-
-
-      //Button button = new Button("");
-      //button.setBounds(50,100,95,30);
-      //button.setBackground(color);
-
-      //button.addActionListener(new ActionListener(){
-		  //public void actionPerformed(ActionEvent e){
-			  //page.drawRect(baseX, baseY, 500, 500);}});
-
-      //windows
+      page.fillRect(baseX-width, baseY-height, width, height);
    }
    public void drawWindow(Graphics page){
-	   int x = baseX;
+	   //draws windows
+       int x = baseX;
 	   int y = baseY;
 	   Color window = new Color(230,230,230);
 	   for(int i = 0; i < height; i++){
@@ -74,27 +58,46 @@ public class Building{
     }
 
    /**
-   * setParam
-   * @param new height, width, and color for building
+   * setHeight
+   * @param new height for building
    */
-
    public void setHeight(int y){
    		height = y;
    }
+   /*
+   * getHeight
+   * @returns height
+   */
    public int getHeight(){
 	   return height;
    }
+   /*
+   * getWidth
+   * @returns width
+   */
    public int getWidth(){
    	   return width;
    }
+   /*
+   * getBaseX
+   * @returns baseX
+   */
    public int getBaseX(){
    	   return baseX;
    }
+   /*
+   * getBaseY
+   * @returns baseY
+   */
    public int getBaseY(){
    	   return baseY;
    }
-   public void run(){
-
+   /*
+   * setBaseY
+   * @param y
+   */
+	public void setBaseY(int y){
+		baseY = y;
 	}
 
 }

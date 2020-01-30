@@ -1,8 +1,9 @@
-//********************************************************************
-//  LineUp.java       Author: Lewis/Loftus/Cocking
-//
-//  Demonstrates the use of a graphical object.
-//********************************************************************
+/**
+ * Harrison Zhang
+ * 01/30/2019
+ * City Project
+ * Draws a city using applet functionality
+ */
 
 import java.util.Random;
 import java.applet.*;
@@ -18,7 +19,6 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
    private final int VARIANCE = 50;
 
    private Building build1, build2, build3, build4, build5;
-   private Doofinator doof1;
 
    private AudioClip audio;
 
@@ -55,7 +55,6 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
       build4 = new Building(3*width + 875, 700, c4, h4, width);
 
       Color c5 = new Color(149,159,159);
-      doof1 = new Doofinator(300, 300, c5);
 
       setSize (APPLET_WIDTH, APPLET_HEIGHT);
 
@@ -65,12 +64,8 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 	  Cursor crosshair = Toolkit.getDefaultToolkit().createCustomCursor(aim, new Point(0,0), "custom");
       setCursor(crosshair);
 
-      //wide = getSize().width;
-	  //high = getSize().height;
-	  //mouseX = wide/2;
-	  //mouseY = high/2;
 
-	  //addMouseListener( this );
+	  addMouseListener( this );
 	  //addMouseMotionListener( this );
 
    }
@@ -79,64 +74,114 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
    //  Paints the city on the applet.
    //-----------------------------------------------------------------
    public void paint (Graphics page){
-      //audio = getAudioClip(getCodeBase(), "theme.au");
-      audio.loop();
-
+      audio = getAudioClip(getCodeBase(), "theme.au");
+      //audio.loop();
+      
+      //draws buildings
       build1.draw(page);
       build2.draw(page);
       build3.draw(page);
       build4.draw(page);
 
+      //draws windows
       build1.drawWindow(page);
       build2.drawWindow(page);
       build3.drawWindow(page);
       build4.drawWindow(page);
 
+      //Creates Doofenshmirtz Tower
       Image img = getImage(getDocumentBase(), "doof.jpg");
       page.drawImage(img, 0, 0, getWidth()-850, getHeight(), this);
 
-      doof1.draw(page);
-
-
-      //while(count < 1000){
-		  //repaint();
-	  //}
-	  Random gen = new Random();
+	  //Animates building heights
+      Random gen = new Random();
 	  int count = 0;
-	  //int newHeight1 = build1.getHeight();
+	  int newHeight1 = build1.getHeight();
 	  int newHeight2 = build2.getHeight();
 	  int newHeight3 = build3.getHeight();
 	  int newHeight4 = build4.getHeight();
-	  while(count < 50){
-		 // newHeight1 = newHeight1 + gen.nextInt(3)-1;
+	 while(count < 50){
+		  newHeight1 = newHeight1 + (gen.nextInt(3)-1)*5;
 		  newHeight2 = newHeight2 + (gen.nextInt(3)-1)*5;
 		  newHeight3 = newHeight3 + (gen.nextInt(3)-1)*5;
 		  newHeight4 = newHeight4 + (gen.nextInt(3)-1)*5;
 
+		  build1.setHeight(newHeight1);
 		  build2.setHeight(newHeight2);
 		  build3.setHeight(newHeight3);
 		  build4.setHeight(newHeight4);
-		  repaint();
-		  //just to slow downt he movement of the figure
+		  //repaint();
+		  
 		  try{
 			  Thread.sleep(10);//30 or 60 fps = 17
 		  }catch(Exception e){}
-		  //test for is this working
 		  count++;
 	  }
+	  repaint();
 
    }
+   
+   //makes buildings disappear when clicked on
    public void mouseClicked(MouseEvent e){
 	   mouseX = e.getX();
 	   mouseY = e.getY();
-	   if(mouseX > build1.getBaseX()-155 && mouseX < (build1.getBaseX()+build1.getWidth()) &&
-	      mouseY > build1.getHeight() && mouseY < (build1.getBaseY()));{
-		   int next = build1.getHeight();
-		   while(build1.getHeight() < 700){
-			   next = next + 100;
-			   build1.setHeight(next);
+
+	   //X & Y bounds
+	   int x_req1 = build1.getBaseX() + build1.getWidth() - 155;
+	   int y_req1 = build1.getBaseY() + build1.getHeight() - 400;
+
+	   if((mouseX > build1.getBaseX() - 155 && mouseX < x_req1) &&
+	      (mouseY > build1.getBaseY() - 400 && mouseY < y_req1)){
+
+			//building disappears from the screen
+		   while(build1.getBaseY() < APPLET_HEIGHT ){
+			   //next = next + 50;
+			   build1.setBaseY(build1.getBaseY()+500);
 			   repaint();
-		   }
+			}
+	   }
+
+	   //building 2
+	   int x_req2 = build2.getBaseX() + build2.getWidth() - 155;
+	   int y_req2 = build2.getBaseY() + build2.getHeight() - 400;
+
+	   if((mouseX > build2.getBaseX() - 155 && mouseX < x_req2) &&
+		  (mouseY > build2.getBaseY() - 400 && mouseY < y_req2)){
+
+			//building disappears from the screen
+		   while(build2.getBaseY() < APPLET_HEIGHT ){
+			   build2.setBaseY(build2.getBaseY()+500);
+			   repaint();
+			}
+	   }
+
+	   //building 3
+	   int x_req3 = build3.getBaseX() + build3.getWidth() - 155;
+	   int y_req3 = build3.getBaseY() + build3.getHeight() - 400;
+
+	   if((mouseX > build3.getBaseX() - 155 && mouseX < x_req3) &&
+		  (mouseY > build3.getBaseY() - 400 && mouseY < y_req3)){
+
+			//building disappears from the screen
+		   while(build3.getBaseY() < APPLET_HEIGHT ){
+			   build3.setBaseY(build3.getBaseY()+500);
+			   repaint();
+			}
+	   }
+
+	   //building 4
+	   int x_req4 = build4.getBaseX() + build4.getWidth() - 155;
+	   int y_req4 = build4.getBaseY() + build4.getHeight() - 400;
+
+	   if((mouseX > build4.getBaseX() - 155 && mouseX < x_req4) &&
+		  (mouseY > build4.getBaseY() - 400 && mouseY < y_req4)){
+
+			//building disappears from the screen
+		   while(build4.getBaseY() < APPLET_HEIGHT ){
+			   //next = next + 50;
+			   build4.setBaseY(build4.getBaseY()+500);
+			   repaint();
+			}
 	   }
    }
 
