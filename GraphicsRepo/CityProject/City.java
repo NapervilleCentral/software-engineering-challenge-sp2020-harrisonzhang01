@@ -136,7 +136,7 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 			//building disappears from the screen
 		   while(build1.getBaseY() < APPLET_HEIGHT ){
 			   //next = next + 50;
-			   build1.setBaseY(build1.getBaseY()+500);
+			   build1.setBaseY(build1.getBaseY()+1000);
 			   repaint();
 			}
 	   }
@@ -150,7 +150,7 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 
 			//building disappears from the screen
 		   while(build2.getBaseY() < APPLET_HEIGHT ){
-			   build2.setBaseY(build2.getBaseY()+500);
+			   build2.setBaseY(build2.getBaseY()+1000);
 			   repaint();
 			}
 	   }
@@ -164,7 +164,7 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 
 			//building disappears from the screen
 		   while(build3.getBaseY() < APPLET_HEIGHT ){
-			   build3.setBaseY(build3.getBaseY()+500);
+			   build3.setBaseY(build3.getBaseY()+1000);
 			   repaint();
 			}
 	   }
@@ -179,7 +179,7 @@ public class City extends Applet implements MouseListener{//, MouseMotionListene
 			//building disappears from the screen
 		   while(build4.getBaseY() < APPLET_HEIGHT ){
 			   //next = next + 50;
-			   build4.setBaseY(build4.getBaseY()+500);
+			   build4.setBaseY(build4.getBaseY()+1000);
 			   repaint();
 			}
 	   }
